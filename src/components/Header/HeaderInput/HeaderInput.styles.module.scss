@@ -1,0 +1,41 @@
+.headerInput{
+    flex: 1;
+    display: flex;
+
+    & input{
+        width: 100%;
+        height: 84px;
+        padding-left: 32px;
+        font-size: 16px;
+        font-weight: 400;
+        background-color: #2231AA;
+        border-left: 1px solid #5360CD;
+
+        &::placeholder{
+            color: #2231AA
+        }        
+    }
+
+    &:focus-within input{
+        background-color: #5360CD;
+
+        &::placeholder{
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        & ~ button{
+            background-color: #5360CD;
+            cursor: pointer;
+
+            & path{
+                fill: white;
+            }
+        }
+    }
+
+    & button{
+        height: 84px;
+        width: 84px;
+        background-color: #2231AA;
+    }
+}
