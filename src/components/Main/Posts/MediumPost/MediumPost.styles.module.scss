@@ -1,0 +1,33 @@
+.mediumPost{
+    display: flex;
+    flex-direction: column;
+    width: 352px;
+    gap: 24px;
+    border-bottom: 1px solid #DADADA;
+    margin-bottom: 40px;
+
+    & h4 {
+        margin: 0 0 8px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #8D8E97;
+    }
+
+    & h3 {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+
+.allButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons {
+    display: flex;
+    width: 72px;
+    gap: 24px;
+    margin-bottom: 40px;
+}

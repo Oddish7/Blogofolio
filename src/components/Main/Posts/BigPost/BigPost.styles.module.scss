@@ -4,26 +4,27 @@
     grid-template-columns: calc(63% - 16px) calc(37% - 16px);
     column-gap: 32px;
     border-bottom: 1px solid #DADADA;
-}
+    margin-bottom: 40px;
 
-.date {
-    margin: 0 0 8px;
-    font-weight: 400;
-    font-size: 16px;
-    color: #8D8E97;
-}
+    & h3 {
+        margin: 0 0 8px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #8D8E97;
+    }
 
-.postTitle {
-    font-weight: 700;
-    font-size: 32px;
-}
+    & h2 {
+        font-weight: 700;
+        font-size: 32px;
+    }
 
-.postText {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 28px;
-    color: #8D8E97;
-    margin: 24px 0 31px;
+    & p {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 28px;
+        color: #8D8E97;
+        margin: 24px 0 31px;
+    }
 }
 
 .buttons {
