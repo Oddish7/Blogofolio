@@ -1,0 +1,46 @@
+.signIn {
+    width: 624px;
+    height: 472px;
+    border: 1px solid #DADADA;
+    padding: 40px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 8px;
+
+    &:nth-child(3) {
+        margin-top: 40px;
+    }
+}
+
+.input {
+    width: 544px;
+    height: 56px;
+    border-radius: 2px;
+    background-color: #FFF;
+    padding-left: 20px;
+
+    &:focus {
+        outline: 2px solid #DADADA;
+    }
+}
+
+.forgot {
+    margin-top: 16px;
+    margin-bottom: 48px;
+    cursor: pointer;
+}
+
+.account {
+    text-align: center;
+    margin-top: 24px;
+    color: #8D8E97;
+
+    & span {
+        color: #2231AA;
+        cursor: pointer;
+    }
+}

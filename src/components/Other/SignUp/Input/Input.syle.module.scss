@@ -1,0 +1,29 @@
+.box{
+    width: 100%;
+    &:not(:last-child){
+        margin-bottom: 40px;
+    }
+
+    &:last-child{
+        margin-bottom: 48px;
+    }
+}
+
+p {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.input {
+    width: 544px;
+    height: 56px;
+    border-radius: 2px;
+    background-color: #FFF;
+    padding-left: 20px;
+
+    &:focus {
+        outline: 2px solid #DADADA;
+    }
+}
+
