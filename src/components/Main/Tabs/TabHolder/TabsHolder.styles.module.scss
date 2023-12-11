@@ -1,0 +1,47 @@
+.tabs_holder{
+    width: 100%;
+}
+
+.tabs_links{
+    border-bottom: 1px solid transparent;
+}
+
+:global(.dark) .tabs_links{
+    border-bottom-color: rgba(141, 142, 151, 1);
+}
+
+
+
+.tabs_holder__button{
+    height: 56px;
+    padding: 7px 40px 24px;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: all ease-in-out .2s;
+
+    &:hover{
+        border-bottom: 2px solid rgba(144, 143, 143, 0.502);
+    }
+
+    &.active {
+        border-bottom: 2px solid black;
+    }
+}
+
+:global(.dark) .tabs_holder__button{
+    color: #ffffff;
+
+    &:hover{
+        border-bottom: 2px solid rgba(255, 255, 255, 0.502);
+    }
+
+    &.active {
+        border-bottom: 2px solid #ffffff;
+    }
+}

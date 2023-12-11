@@ -1,5 +1,5 @@
-import { MenuWrapper } from './Menu/MenuWrapper'
-import { HeaderInput } from './HeaderInput/Search'
+import { MenuWrapper } from './MenuWrapper/MenuWrapper'
+import { HeaderInput } from './HeaderInput/HeaderInput'
 import { Search } from './Search/Search'
 import { UserInfo } from './UserInfo/UserInfo'
 import styles from './Headet.styles.module.scss'

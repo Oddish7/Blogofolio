@@ -4,12 +4,15 @@ import App from './App';
 
 import './styles/reset.scss'
 import './styles/common.scss'
+import { ThemeContextProvider } from './utils/ThemeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeContextProvider>
+      <App />
+    </ThemeContextProvider>
   </React.StrictMode>
 );
 

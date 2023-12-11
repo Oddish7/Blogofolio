@@ -1,42 +1,83 @@
-.smallPost{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 352px;
-    border-bottom: 1px solid #DADADA;
+.small_post{
+    display: grid;
+    grid-template-rows: 57% calc(43% - 24px);
+    column-gap: 34px;
+    row-gap: 24px;
+    width: 100%;
     margin-bottom: 40px;
+    border-bottom: 2px solid #DADADA;
 
     & h4{
+        grid-row: 1/2;
+        grid-column: 1/2;
         margin: 0 0 8px;
-        font-size: 16px;
         font-weight: 400;
+        font-size: 16px;
         color: #8D8E97;
     }
 
     & h3{
+        font-family: Inter;
         font-size: 18px;
         font-weight: 600;
         line-height: 28px;
+        margin: 0;
+        grid-column: 1/2;
+        grid-row: 1/2;
+        text-transform: capitalize;
+        color: #313037;
+
+        &:hover{
+            color: #2231AA;
+            cursor: pointer;
+        }
     }
 }
 
-.top {
-    display: flex;
-    gap: 34px;
+.small_post_img{
+    aspect-ratio: 1/1;
+    height: 96px;
+    margin-left: auto;
 
-    & img {
-        height: 96px;
+    & img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
 
-.allButtons {
+.all_buttons{
     display: flex;
     justify-content: space-between;
+    grid-column: 1/3;
+    margin-bottom: 38px;
+
+
+    & > div{
+        display: flex;
+        align-items: center;
+    }
 }
 
-.buttons {
-    display: flex;
-    width: 72px;
-    gap: 24px;
-    margin-bottom: 40px;
+.like_buttons{
+    margin-right: 24px;
+}
+
+.mark_buttons{
+    & button{
+        margin: 0;
+    }
+
+    & button:first-child{
+        margin-right: 8px;
+    }
+}
+
+:global(.dark) .small_post h3{
+    color: #FFFFFF;
+
+    &:hover{
+        color: #2231AA;
+        cursor: pointer;
+    }
 }

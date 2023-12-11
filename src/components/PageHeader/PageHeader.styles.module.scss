@@ -1,0 +1,11 @@
+.page_header{
+    margin: 32px 0 72px;
+    font-weight: 700;
+    font-size: 56px;
+    color: rgba(49, 48, 55, 1);
+}
+
+:global(.dark) .page_header{
+    color: white;
+}
+

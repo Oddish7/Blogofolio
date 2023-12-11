@@ -1,4 +1,16 @@
-.main {
+.main{
     width: 1120px;
+    min-height: calc(100vh - 92px);
     margin: 0 auto;
+    padding-top: 156px;
+
+    & h1{
+        font-size: 56px;
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+}
+
+:global(.dark) .main h1{
+    color: #ffffff;
 }

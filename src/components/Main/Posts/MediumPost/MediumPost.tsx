@@ -1,13 +1,12 @@
-import { LikeButton } from '../PostButtons/LikeButton/LikeButton'
-import { DislikeButton } from '../PostButtons/DislikeButton/DislikeButton'
-import { BookMarkButton } from '../PostButtons/BookMarkButton/BookMarkButton'
-import { MoreButton } from '../PostButtons/MoreButton/MoreButton'
+import { LikeButton } from '../../../Buttons/LikeButton/LikeButton'
+import { DislikeButton } from '../../../Buttons/DislikeButton/DislikeButton'
+import { BookMarkButton } from '../../../Buttons/BookMarkButton/BookMarkButton'
+import { MoreButton } from '../../../Buttons/MoreButton/MoreButton'
 import styles from './MediumPost.styles.module.scss'
-import mediumPost from '../../../../images/Posts/MediumPost.png'
 
 type Post = {
     id: number
-    date: string
+    date: Date
     title: string
     description: string
     image: string
@@ -20,20 +19,20 @@ type Props = {
 export const MediumPost = (props: Props) => {
     const {post} = props
     return (
-        <div className={styles.mediumPost}>
-            <div>
-                <img className={post.image} src={mediumPost} alt="space"/>
+        <div className={styles.middle_post}>
+            <div className={styles.middle_post_img}>
+                <img src={post.image} alt="Astronaut"/>
             </div>
-            <div>
-                <h4>{post.date}</h4>
-                <h3>{post.title}</h3>
-            </div>
-            <div className={styles.allButtons}>
-                <div className={styles.buttons}>
-                    <LikeButton/>
+            <h4>{new Date(post.date).toLocaleDateString()}</h4>
+            <h3>{post.title}</h3>
+            <div className={styles.buttons_block}>
+                <div className={styles.buttons_block__inner}>
+                    <div className={styles.button_space}>
+                        <LikeButton/>
+                    </div>
                     <DislikeButton/>
                 </div>
-                <div className={styles.buttons}>
+                <div>
                     <BookMarkButton/>
                     <MoreButton/>
                 </div>

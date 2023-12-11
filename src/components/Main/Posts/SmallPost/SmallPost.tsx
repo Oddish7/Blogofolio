@@ -1,13 +1,12 @@
-import { LikeButton } from '../PostButtons/LikeButton/LikeButton'
-import { DislikeButton } from '../PostButtons/DislikeButton/DislikeButton'
-import { BookMarkButton } from '../PostButtons/BookMarkButton/BookMarkButton'
-import { MoreButton } from '../PostButtons/MoreButton/MoreButton'
+import { LikeButton } from '../../../Buttons/LikeButton/LikeButton'
+import { DislikeButton } from '../../../Buttons/DislikeButton/DislikeButton'
+import { BookMarkButton } from '../../../Buttons/BookMarkButton/BookMarkButton'
+import { MoreButton } from '../../../Buttons/MoreButton/MoreButton'
 import styles from './SmallPost.styles.module.scss'
-import smallPost from '../../../../images/Posts/SmallPost.png'
 
 type Post = {
     id: number
-    date: string
+    date: Date
     title: string
     description: string
     image: string
@@ -17,23 +16,25 @@ type Props = {
     post: Post
 }
 
-export const SmallmPost = (props: Props) => {
+export const SmallPost = (props: Props) => {
     const {post} = props
     return (
-        <div className={styles.smallPost}>
-            <div className={styles.top}>
-                <div>
-                    <h4>{post.date}</h4>
-                    <h3>{post.title}</h3>
-                </div>
-                <img className={post.image} src={smallPost} alt="space"/>
+        <div className={styles.small_post}>
+            <div>
+                <h4>{new Date(post.date).toLocaleDateString()}</h4>
+                <h3>{post.title}</h3>
             </div>
-            <div className={styles.allButtons}>
-                <div className={styles.buttons}>
-                    <LikeButton/>
+            <div className={styles.small_post_img}>
+                <img src={post.image} alt="Astronaut"/>
+            </div>
+            <div className={styles.all_buttons}>
+                <div>
+                    <div className={styles.like_buttons}>
+                        <LikeButton/>
+                    </div>
                     <DislikeButton/>
                 </div>
-                <div className={styles.buttons}>
+                <div className={styles.mark_buttons}>
                     <BookMarkButton/>
                     <MoreButton/>
                 </div>

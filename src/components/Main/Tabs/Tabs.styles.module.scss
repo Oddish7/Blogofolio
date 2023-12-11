@@ -1,24 +1,3 @@
-.tabWrapper {
-    display: flex;
-    max-width: 1120px;
-    border-bottom: 1px solid #DADADA;
-    margin-bottom: 64px;
-}
-
-.tab {
-    display: flex;
-    padding: 0px 40px 24px 40px;
-    align-items: flex-start;
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: -2px;
-    cursor: pointer;
-
-    &:hover {
-        color: #2231AA;
-    }
-
-    &.active {
-        border-bottom: 2px solid #313037;
-    }
+.tabs{
+    width: 100%;
 }

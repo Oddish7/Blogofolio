@@ -1,33 +1,70 @@
-.mediumPost{
-    display: flex;
-    flex-direction: column;
-    width: 352px;
-    gap: 24px;
-    border-bottom: 1px solid #DADADA;
+.middle_post{
+    width: calc(50% - 16px);
     margin-bottom: 40px;
+    border-bottom: 2px solid #DADADA;
+    ;
 
-    & h4 {
-        margin: 0 0 8px;
+    & h4{
         font-weight: 400;
         font-size: 16px;
+        margin: 0;
+        padding: 0;
         color: #8D8E97;
     }
 
-    & h3 {
+    & h3{
         font-weight: 600;
         font-size: 18px;
-        line-height: 28px;
+        margin: 8px 0 28px;
+        text-transform: capitalize;
+        color: #313037;
+
+        min-height: 66px;
+
+        &:hover{
+            color: #2231AA;
+            cursor: pointer;
+        }
+    }
+
+    &:nth-child(2n - 1){
+        margin-right: 32px;
+    }
+
+}
+
+.middle_post_img{
+    height: 256px;
+    margin-bottom: 24px;
+    & img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
 
-.allButtons {
+.buttons_block{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 30px;
+
+    & div{
+        display: flex;
+    }
 }
 
-.buttons {
-    display: flex;
-    width: 72px;
-    gap: 24px;
-    margin-bottom: 40px;
+.button_space{
+    margin-right: 24px;
+}
+
+:global(.dark) .middle_post{
+    & h3{
+        color: #FFFFFF;
+        transition: all .3s ease-in-out;
+
+        &:hover{
+            color: #2231AA;
+            cursor: pointer;
+        }
+    }
 }

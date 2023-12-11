@@ -1,0 +1,113 @@
+.button_block{
+    display: flex;
+    align-items: center;
+
+    font-family: Barlow;
+    font-size: 16px;
+    font-weight: 700;
+    & p{
+        margin: 0;
+    }
+}
+
+:global(.dark) .button_block{
+    & p{
+        color: #ffffff;
+    }
+}
+
+.like_button, .dislike_button{
+    width: 36px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    // padding: 16px 32px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    // margin: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    transition: all ease-in-out .4s;
+
+    &:hover:not(:disabled){
+        & path{
+            fill: white;
+            transition: all ease-in-out .4s;
+        }
+    }
+
+    &:disabled{
+        cursor: not-allowed;
+
+        & path{
+            fill: rgba(141, 142, 151, 1);
+            transition: all ease-in-out .4s;
+        }
+    }
+}
+
+:global(.dark) .like_button, :global(.dark) .dislike_button{
+    & path{
+        fill: #ffffff;
+    }
+}
+
+.dis_change{
+    padding-top: 6px;
+    &:hover:not(:disabled){
+        background-color: rgba(253, 52, 25, 1);
+    }
+}
+
+:global(.dark) .dis_change{
+    padding-top: 6px;
+    &:hover:not(:disabled){
+        background-color: rgba(253, 52, 25, 1);
+    }
+}
+
+
+
+.like_change{
+    &:hover:not(:disabled){
+        background-color: rgba(83, 96, 205, 1);
+    }
+}
+
+
+:global(.dark) .like_change{
+    &:hover:not(:disabled){
+        background-color: rgba(83, 96, 205, 1);
+    }
+}
+
+
+.set_liked_post{
+    & path{
+        fill: rgba(83, 96, 205, 1);
+    }
+}
+
+:global(.dark) .set_liked_post{
+    & path{
+        fill: rgba(83, 96, 205, 1);
+    }
+}
+
+
+
+.set_disliked_post{
+    & path{
+        fill: rgba(253, 52, 25, 1);
+    }
+}
+
+:global(.dark) .set_disliked_post{
+    & path{
+        fill: rgba(253, 52, 25, 1);
+    }
+}

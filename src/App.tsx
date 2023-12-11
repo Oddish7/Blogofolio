@@ -1,25 +1,22 @@
 import './App.css'
-import { useState } from 'react'
+import { useThemeContext } from './utils/ThemeContext'
 import { Header } from './components/Header/Headert'
 import { Main } from './components/Main/Main'
-import { SingIn } from './components/Other/SignIn/SignIn'
-import { ThemeButtons } from './components/test/ThemeButtons/ThemeButtons'
-import { SignUp } from './components/Other/SignUp/SignUp'
+import { Footer } from './components/Footer/Footer'
 
 function App() {
-  const [theme, setTheme] = useState<string>('light')
-
-  const changeTheme = (theme: string) => {
-      setTheme(theme)
-  }
+  const baseStyle = 'base_style'
+  const themeCtx = useThemeContext()
 
   return (
-    <div className={theme}>
+    <div className={`${themeCtx.state} ${baseStyle}`}>
     <Header/>
-    <Main/>
-    <SingIn/>
-    <SignUp/>
-    <ThemeButtons theme={theme} changeTheme={changeTheme}/>
+
+    <div style={{minHeight: 'calc(100vh - 164px)'}} >
+      <Main/>
+    </div>
+
+    <Footer/>
     </div>
   )
 }

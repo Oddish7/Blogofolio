@@ -1,0 +1,32 @@
+.bookmark{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    padding: 0;
+    margin: 8px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover:not(:disabled){
+        background-color: #5360CD;
+        & path{
+            fill: white;
+        }
+    }
+
+    &:disabled{
+        cursor: not-allowed;
+
+        & path{
+            fill: #8D8E97;
+        }
+    }
+}
+
+:global(.dark) .bookmark{
+    & path{
+        fill: #FFFFFF;
+    }
+}

@@ -1,0 +1,36 @@
+.box{
+    width: 100%;
+
+    p {
+        font-weight: 600;
+        font-size: 16px;
+        margin: 40px 0 8px 0;
+        color: #313037;
+    }
+    .input{
+        width: 100%;
+        height: 56px;
+        border-radius: 2px;
+        border: 0;
+        padding-left: 20px;
+        box-sizing: border-box;
+    
+        border: 2px solid transparent;
+        transition: all ease-in-out .2s;
+    
+        &:focus{
+            border: 2px solid #DADADA;
+        }
+    }
+}
+
+input::placeholder{
+    font-weight: 400;
+    font-size: 16px;
+}
+
+:global(.dark) .box{
+    & p{
+        color: #FFFFFF;
+    }
+}
