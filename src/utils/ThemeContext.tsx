@@ -1,33 +1,33 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react'
 
-type ThemeState = 'light' | 'dark'
+// type ThemeState = 'light' | 'dark'
 
-type ThemeContextType = {
-    state: ThemeState
-    setState: React.Dispatch<React.SetStateAction<ThemeState>>
-}
+// type ThemeContextType = {
+//     state: ThemeState
+//     setState: React.Dispatch<React.SetStateAction<ThemeState>>
+// }
 
-export const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType)
+// export const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType)
 
-type ProviderProps = {
-    children: ReactNode
-}
+// type ProviderProps = {
+//     children: ReactNode
+// }
 
-export const ThemeContextProvider = ({children}: ProviderProps) => {
-    const [state, setState] = useState<ThemeState>('light')
+// export const ThemeContextProvider = ({children}: ProviderProps) => {
+//     const [state, setState] = useState<ThemeState>('light')
 
-    const value = {
-        state,
-        setState
-    }
+//     const value = {
+//         state,
+//         setState
+//     }
 
-    return (
-        <ThemeContext.Provider value={value}>
-            {children}
-        </ThemeContext.Provider>
-    )
-}
+//     return (
+//         <ThemeContext.Provider value={value}>
+//             {children}
+//         </ThemeContext.Provider>
+//     )
+// }
 
-export const useThemeContext = () => {
-    return useContext(ThemeContext)
-}
+// export const useThemeContext = () => {
+//     return useContext(ThemeContext)
+// }

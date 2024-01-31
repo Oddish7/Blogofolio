@@ -1,42 +1,45 @@
-import { LikeButton } from '../../../Buttons/LikeButton/LikeButton'
-import { DislikeButton } from '../../../Buttons/DislikeButton/DislikeButton'
 import { BookMarkButton } from '../../../Buttons/BookMarkButton/BookMarkButton'
 import { MoreButton } from '../../../Buttons/MoreButton/MoreButton'
+import { Link } from 'react-router-dom'
+import { LikeAndDislikeButtonsWrapper } from '../../../Buttons/LikeAndDislikeButtonsWrapper/LikeAndDislikeButtonsWrapper'
+import { Posts } from '../../Tabs/TabContent/TabContent'
+import { MoreInnerButtons } from '../../../Buttons/MoreInnerButtons/MoreInnerButtons'
+import { useMoreState } from '../../../../store/more/selector'
 import styles from './SmallPost.styles.module.scss'
 
-type Post = {
-    id: number
-    date: Date
-    title: string
-    description: string
-    image: string
-}
-
 type Props = {
-    post: Post
+    post: Posts
+    searchRes?: boolean
+    openImage?: () => void
 }
 
 export const SmallPost = (props: Props) => {
-    const {post} = props
+    const {post, searchRes = false, openImage} = props
+    const moreState = useMoreState(post.id.toString())
+    const {more} = moreState || {}
     return (
-        <div className={styles.small_post}>
+        <div className={`${styles.small_post} ${searchRes ? styles.search_results : null}`} id={post.id.toString()}>
             <div>
                 <h4>{new Date(post.date).toLocaleDateString()}</h4>
-                <h3>{post.title}</h3>
+                <Link to={`openpost/${post.id}`}>
+                    <h3>{post.title}</h3>
+                </Link>
             </div>
             <div className={styles.small_post_img}>
-                <img src={post.image} alt="Astronaut"/>
+                <img alt={`post ${post.id}`} src={post.image} onClick={openImage}/>
             </div>
             <div className={styles.all_buttons}>
                 <div>
-                    <div className={styles.like_buttons}>
-                        <LikeButton/>
-                    </div>
-                    <DislikeButton/>
+                    <LikeAndDislikeButtonsWrapper likes={post.likes} dislikes={post.dislikes} postId={post.id.toString()}/>
                 </div>
                 <div className={styles.mark_buttons}>
-                    <BookMarkButton/>
-                    <MoreButton/>
+                    <BookMarkButton postId={post.id.toString()}/>
+                    <MoreButton postId={post.id.toString()}/>
+                    {
+                        more! ?
+                        <MoreInnerButtons typeOfPost='more_small_post'/> :
+                        null
+                    }
                 </div>
             </div>
         </div>

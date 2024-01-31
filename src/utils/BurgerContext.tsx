@@ -1,54 +1,54 @@
 import React from 'react'
 import { useReducer, useContext, createContext, ReactNode} from 'react'
 
-type BurgerState = {
-    isOpened: boolean;
-}
+// type BurgerState = {
+//     isOpened: boolean;
+// }
 
-const burgerInitState: BurgerState = {
-    isOpened: false
-}
+// const burgerInitState: BurgerState = {
+//     isOpened: false
+// }
 
-type BurgerAction = {
-    type: 'open' | 'close'
-}
+// type BurgerAction = {
+//     type: 'open' | 'close'
+// }
 
-const burgerReducer = (state: BurgerState, action: BurgerAction): BurgerState => {
-    switch (action.type) {
-        case 'open':
-            return {
-                isOpened: true
-            }
-        case 'close':
-            return {
-                isOpened: false
-            }
-        default:
-            return state
-    }
-}
+// const burgerReducer = (state: BurgerState, action: BurgerAction): BurgerState => {
+//     switch (action.type) {
+//         case 'open':
+//             return {
+//                 isOpened: true
+//             }
+//         case 'close':
+//             return {
+//                 isOpened: false
+//             }
+//         default:
+//             return state
+//     }
+// }
 
-type BurgerStateContextType = {
-    state: BurgerState
-    dispatch: React.Dispatch<BurgerAction>
-}
+// type BurgerStateContextType = {
+//     state: BurgerState
+//     dispatch: React.Dispatch<BurgerAction>
+// }
 
-const BurgerContext = createContext<BurgerStateContextType> ({} as BurgerStateContextType)//content creation
+// const BurgerContext = createContext<BurgerStateContextType> ({} as BurgerStateContextType)//content creation
 
-type BurgerProviderProps = {
-    children: ReactNode
-}
+// type BurgerProviderProps = {
+//     children: ReactNode
+// }
 
-export const BurgerProvider = ({ children }: BurgerProviderProps) => {
-    const [state, dispatch] = useReducer(burgerReducer, burgerInitState)
+// export const BurgerProvider = ({ children }: BurgerProviderProps) => {
+//     const [state, dispatch] = useReducer(burgerReducer, burgerInitState)
 
-    return (
-        <BurgerContext.Provider value={{ state, dispatch }}>
-            {children}
-        </BurgerContext.Provider>
-    )
-}
+//     return (
+//         <BurgerContext.Provider value={{ state, dispatch }}>
+//             {children}
+//         </BurgerContext.Provider>
+//     )
+// }
 
-export const useBurgerContext = () => {
-    return useContext(BurgerContext)
-}
+// export const useBurgerContext = () => {
+//     return useContext(BurgerContext)
+// }

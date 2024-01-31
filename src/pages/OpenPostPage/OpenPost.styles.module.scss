@@ -1,8 +1,37 @@
+@import '../../utils/colors.module.scss';
+
+.open_post_backlink{
+    display: flex;
+    align-items: center;
+
+    & p, span{
+        margin: 0 8px 32px 0;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        color: $dark-gray;
+        cursor: default;
+    }
+
+    & p:first-child{
+        color: $dark-mode-color;
+        cursor: pointer;
+    }
+
+    & span{
+        font-size: 18px;
+    }
+
+    & a{
+        text-decoration: none;
+    }
+}
+
 .open_post_header{
     font-family: Inter;
     font-size: 56px;
     font-weight: 700;
-    color: rgba(49, 48, 55, 1);
+    color: $dark-mode-color;
 
     margin: 0 0 48px;
 }
@@ -27,7 +56,7 @@
     font-family: Inter;
     font-size: 18px;
     font-weight: 400;
-    color: rgba(49, 48, 55, 1);
+    color: $dark-mode-color;
     line-height: 32px;
 
     margin: 0;
@@ -49,4 +78,18 @@
             margin-right: 6px;
         }
     }
+}
+
+:global(.dark) .open_post_backlink{
+    & p:first-child{
+        color: rgba(255, 255, 255, 1);
+    }
+}
+
+:global(.dark) .open_post_header{
+    color: rgba(255, 255, 255, 1);
+}
+
+:global(.dark) .open_page_text{
+    color: rgba(255, 255, 255, 1);
 }

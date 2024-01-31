@@ -1,42 +1,44 @@
-import { LikeButton } from '../../../Buttons/LikeButton/LikeButton'
-import { DislikeButton } from '../../../Buttons/DislikeButton/DislikeButton'
 import { BookMarkButton } from '../../../Buttons/BookMarkButton/BookMarkButton'
 import { MoreButton } from '../../../Buttons/MoreButton/MoreButton'
+import { Link } from 'react-router-dom'
+import { LikeAndDislikeButtonsWrapper } from '../../../Buttons/LikeAndDislikeButtonsWrapper/LikeAndDislikeButtonsWrapper'
+import { Posts } from '../../Tabs/TabContent/TabContent'
+import { MoreInnerButtons } from '../../../Buttons/MoreInnerButtons/MoreInnerButtons'
+import { useMoreState } from '../../../../store/more/selector'
 import styles from './MediumPost.styles.module.scss'
 
-type Post = {
-    id: number
-    date: Date
-    title: string
-    description: string
-    image: string
-}
-
 type Props = {
-    post: Post
+    post: Posts
+    openImage: (id: number) => void
 }
 
 export const MediumPost = (props: Props) => {
-    const {post} = props
+    const {post, openImage} = props
+    const moreState = useMoreState(post.id.toString())
+    const {more} = moreState || {}
+
     return (
-        <div className={styles.middle_post}>
+        <div className={styles.middle_post} id={post.id.toString()}>
             <div className={styles.middle_post_img}>
-                <img src={post.image} alt="Astronaut"/>
+                <img src={post.image} alt="Astronaut" onClick={() => openImage(post.id)}/>
             </div>
             <h4>{new Date(post.date).toLocaleDateString()}</h4>
-            <h3>{post.title}</h3>
+            <Link to={`openpost/${post.id}`}>
+                <h3>{post.title}</h3>
+            </Link>
             <div className={styles.buttons_block}>
                 <div className={styles.buttons_block__inner}>
-                    <div className={styles.button_space}>
-                        <LikeButton/>
-                    </div>
-                    <DislikeButton/>
+                    <LikeAndDislikeButtonsWrapper likes={post.likes} dislikes={post.dislikes} postId={post.id.toString()}/>
                 </div>
                 <div>
-                    <BookMarkButton/>
-                    <MoreButton/>
+                    <BookMarkButton postId={post.id.toString()}/>
+                    <MoreButton postId={post.id.toString()}/>
                 </div>
             </div>
+            {
+                more! ?
+                <MoreInnerButtons typeOfPost='more_middle_post'/> : null
+            }
         </div>
     )
 }

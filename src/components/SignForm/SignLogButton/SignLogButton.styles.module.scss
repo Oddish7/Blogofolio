@@ -1,23 +1,20 @@
-.primary_button{
+@import '../../../../utils/colors.module.scss';
+
+.sign_log_button{
     width: 100%;
-    height: 56px;
-    margin-top: 48px;
-    padding: 16px 32px;
-    background-color: #2231AA;
-    border-radius: 2px;
-    color: #FFFFFF;
+    height: 84px;
+
+    font-family: Inter;
+    font-size: 16px;
     font-weight: 600;
-    font-size: 18px;
+
+    background-color: $light-gray;
+    border: none;
+
     transition: all ease-in-out .4s;
     cursor: pointer;
 
     &:hover{
-        background-color: #5360CD;
-    }
-
-    &:disabled{
-        background-color: #E8E8E8;
-        color: #8D8E97;
-        cursor: not-allowed;
+        background-color: $medium-gray;
     }
 }

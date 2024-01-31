@@ -5,6 +5,9 @@
     background-color: transparent;
     cursor: pointer;
 
+    width: 50%;
+    height: 80px;
+
     &:nth-child(n + 1){
         border-left: 1px solid #E8E8E8;
     }

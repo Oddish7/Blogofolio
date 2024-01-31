@@ -1,7 +1,8 @@
-import { BackToHome } from '../../components/Buttons/BackToHome/BackToHome'
+import { useEffect } from 'react'
+import { BackToHome } from '../../components/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
 import { SignForm } from '../../components/SignForm/SignForm'
-import styles from '../SignInPage/sign_in_page.module.scss'
+import styles from '../SignInPage.styles.module.scss'
 
 type InputType = {
     title: string
@@ -23,6 +24,8 @@ export const NewPasswordPage = () => {
         }
     ]
 
+    useEffect(() => window.scrollTo(0, 0))
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.page}>
@@ -31,6 +34,7 @@ export const NewPasswordPage = () => {
                 <SignForm 
                     innerItems={inputs}
                     buttonName='Set password'
+                    submitLink='/'
                 />
             </div>
         </div>

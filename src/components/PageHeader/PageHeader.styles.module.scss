@@ -1,8 +1,11 @@
+@import '../../utils/colors.module.scss';
+
 .page_header{
-    margin: 32px 0 72px;
-    font-weight: 700;
+    font-family: Inter;
     font-size: 56px;
-    color: rgba(49, 48, 55, 1);
+    font-weight: 700;
+    color: $dark-mode-color;
+    margin: 32px 0 72px;
 }
 
 :global(.dark) .page_header{

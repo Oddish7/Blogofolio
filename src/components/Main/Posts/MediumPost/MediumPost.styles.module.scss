@@ -1,28 +1,38 @@
+@import '../../../../utils/colors.module.scss';
+
 .middle_post{
     width: calc(50% - 16px);
     margin-bottom: 40px;
-    border-bottom: 2px solid #DADADA;
-    ;
+    border-bottom: 1px solid $medium-gray;
+    position: relative;
 
     & h4{
-        font-weight: 400;
+        font-family: Inter;
         font-size: 16px;
+        font-weight: 400;
         margin: 0;
         padding: 0;
-        color: #8D8E97;
+        color: $dark-gray;
+    }
+
+    & a{
+        text-decoration: none;
     }
 
     & h3{
-        font-weight: 600;
+        font-family: Inter;
         font-size: 18px;
+        font-weight: 600;
         margin: 8px 0 28px;
         text-transform: capitalize;
-        color: #313037;
+        color: $dark-mode-color;
 
-        min-height: 66px;
+        min-height: 35px;
+        overflow: hidden;
+        transition: all .3s ease-in-out;
 
         &:hover{
-            color: #2231AA;
+            color: $main-color;
             cursor: pointer;
         }
     }
@@ -34,7 +44,7 @@
 }
 
 .middle_post_img{
-    height: 256px;
+    height: 246px;
     margin-bottom: 24px;
     & img{
         width: 100%;
@@ -50,7 +60,9 @@
 
     & div{
         display: flex;
+        height: fit-content;
     }
+
 }
 
 .button_space{
@@ -59,11 +71,11 @@
 
 :global(.dark) .middle_post{
     & h3{
-        color: #FFFFFF;
+        color: rgba(255, 255, 255, 1);
         transition: all .3s ease-in-out;
 
         &:hover{
-            color: #2231AA;
+            color: $main-color;
             cursor: pointer;
         }
     }

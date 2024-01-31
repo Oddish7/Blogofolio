@@ -1,68 +1,56 @@
-import { useState, useEffect } from "react"
-import { BigPost } from '../../Posts/BigPost/BigPost'
-import { MediumPost } from '../../Posts/MediumPost/MediumPost'
-import { SmallPost } from '../../Posts/SmallPost/SmallPost'
-import styles from './TabsContent.styles.module.scss'
+import { useEffect} from "react"
+import { PostImage } from "../../Posts/PostImage/PostImage"
+import { useSelector, useDispatch } from "react-redux"
+import { CloseImageAction } from "../../../../store/postImage/action"
+import { postImage } from "../../../../store/postImage/selector"
+import { selectPosts } from "../../../../store/posts/selector"
+import { LoadPostAsyncAction } from "../../../../store/posts/action"
+import { AppDispatch } from "../../../../store/store"
+import { AllPosts } from "../../Posts/AllPosts/AllPosts"
+import { FavoritePosts } from "../../Posts/FavoritePosts/FavoritePosts"
+import styles from "./TabsContent.styles.module.scss"
 
-type Posts = {
+
+export type Posts = {
     id: number
     date: Date
     title: string
     description: string
     image: string
+    likes: string
+    dislikes: string
 }
 
 type Props = {
     data_type: number
 }
 
-
 export const TabContent = (props: Props) => {
     const {data_type} = props
-    const [data, setData] = useState<Posts[]>([])
+    const {amountPosts, page} = useSelector(selectPosts)
+    const {isOpened, idOfPost} = useSelector(postImage)   
+    const dispatch = useDispatch<AppDispatch>()
+
+    const closeImagePost = () => dispatch(CloseImageAction())
 
     useEffect(() => {
-        fetch('https://65670f6864fcff8d730fa806.mockapi.io/posts')
-            .then(res => res.json())
-            .then(res => setData(res))
-    }, [])
-    if (data.length === 0) {
+        dispatch(LoadPostAsyncAction())
+
+    }, [dispatch])
+
+
+    if (amountPosts.length === 0) {
         return null
     }
     return (
-        <div className={styles.tab_content}>
-            {/* тут лежат все посты */}
+        <>
+            <div className={styles.tab_content}>
             {
                 data_type === 0 ? (
-                    
-                    <>
-                    <div>
-                        <BigPost posts={data}/>
-                    </div>
-
-                    <div className={styles.middle_posts}>
-                    {data
-                    .filter((post) => post.id >= 2 && post.id <= 5)
-                    .map((filteredPost) => (
-                            <MediumPost key={filteredPost.id} post={filteredPost} />
-                        ))}
-                    </div>
-                    <div className={styles.small_posts}>
-                        {
-                            data
-                            .filter((post) => post.id > 5)
-                            .map((filteredPost) => (
-                                <SmallPost key={filteredPost.id} post={filteredPost}/>
-                            ))
-                        }
-                    </div>
-                    </>
-                    
+                    <AllPosts/>
                 ) : (
                     data_type === 1 ? (
-                        <div>
-                            {/* ЛЮБИМЫЕ ПОСТЫ */}
-                        </div>
+                        <FavoritePosts/>
                     ) : (
                         <div>
                             {/* ПОПУЛЯРНЫЕ ПОСТЫ */}
@@ -70,6 +58,14 @@ export const TabContent = (props: Props) => {
                     )
                 )
             }
-        </div>
+            </div>
+            {
+                isOpened ? (
+                    <PostImage dataLength={amountPosts.length} idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
+                ) : (
+                    null
+                )
+            }
+        </>
     )
 }

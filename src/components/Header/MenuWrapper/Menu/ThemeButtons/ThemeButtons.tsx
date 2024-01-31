@@ -1,27 +1,32 @@
 import { NormalMode } from '../NormalMode/NormalMode'
 import { DarkMode } from '../DarkMode/DarkMode'
-import { useThemeContext } from '../../../../../utils/ThemeContext'
+import { useSelector, useDispatch } from 'react-redux';
+import { selectTheme } from '../../../../../store/theme/selector'
+import { setLightAction, setDarkAction } from '../../../../../store/theme/action'
 import styles from './ThemeButtons.styles.module.scss'
 
 
 export const ThemeButtons = () => {
+    const state = useSelector(selectTheme)
+    const dispatch = useDispatch()
 
-    const themeState = useThemeContext()
+    const setLight = () => dispatch(setLightAction())
+    const setDark = () => dispatch(setDarkAction())
     return (
         <div>
             <button 
-                onClick={() => themeState.setState('light')} 
-                disabled={themeState.state === 'light'}
+                onClick={setLight} 
+                disabled={state.theme === 'light'}
                 className={styles.mode_button}
             >
-                <NormalMode disabled={themeState.state !== 'light'}/>
+                <NormalMode disabled={state.theme !== 'light'}/>
             </button>
             <button 
-                onClick={() => themeState.setState('dark')} 
-                disabled={themeState.state !== 'light'}
+                onClick={setDark}
+                disabled={state.theme !== 'light'}
                 className={styles.mode_button}
             >
-                <DarkMode disabled={themeState.state === 'light'}/>
+                <DarkMode disabled={state.theme === 'light'}/>
             </button>
         </div>
     )

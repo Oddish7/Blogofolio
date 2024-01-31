@@ -4,15 +4,22 @@ import App from './App';
 
 import './styles/reset.scss'
 import './styles/common.scss'
-import { ThemeContextProvider } from './utils/ThemeContext';
+
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { appStore } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
-    <ThemeContextProvider>
-      <App />
-    </ThemeContextProvider>
+    <BrowserRouter>
+
+      <Provider store={appStore}>
+              <App />
+      </Provider>
+
+    </BrowserRouter>
   </React.StrictMode>
 );
 

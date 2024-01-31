@@ -1,16 +1,23 @@
+@import '../../../utils/colors.module.scss';
+
 .bookmark{
+    width: 36px;
+    height: fit-content;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    margin: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    padding: 0;
-    margin: 8px;
-    border-radius: 50%;
-    background-color: transparent;
     cursor: pointer;
 
+
     &:hover:not(:disabled){
-        background-color: #5360CD;
+        background-color: $main-hover-color;
         & path{
             fill: white;
         }
@@ -20,13 +27,19 @@
         cursor: not-allowed;
 
         & path{
-            fill: #8D8E97;
+            fill: $dark-gray;
         }
     }
 }
 
 :global(.dark) .bookmark{
     & path{
-        fill: #FFFFFF;
+        fill: rgb(255, 255, 255);
+    }
+}
+
+.add_to_favs{
+    & path{
+        fill: $main-hover-color
     }
 }
