@@ -16,9 +16,10 @@
         outline: none;
         padding-left: 20px;
         box-sizing: border-box;
+        background-color: #fff;
     
         border: 2px solid transparent;
-        transition: all ease-in-out .2s;
+        
     
         &:focus{
             border: 2px solid $medium-gray;

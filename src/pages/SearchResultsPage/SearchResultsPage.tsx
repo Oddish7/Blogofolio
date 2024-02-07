@@ -1,5 +1,5 @@
 import { PageHeader } from '../../components/PageHeader/PageHeader'
-import styles from '../SignInPage/SignInPage.styles.module.scss'
+import styles from '../SignInPage.styles.module.scss'
 
 export const SearchResultsPage = () => {
     return (

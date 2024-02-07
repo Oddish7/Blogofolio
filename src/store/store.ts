@@ -12,6 +12,7 @@ import { postReducer } from "./posts/reducer"
 import { likeReducer } from "./likes/reducer"
 import { moreReducer } from "./more/reducer"
 import { imageReducer } from "./postImage/reducer"
+import { editPostReducer } from "./edit/reducer"
 
 const rootReducer = combineReducers({
     theme: themeReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
     like: likeReducer,
     more: moreReducer,
     openPostImage: imageReducer,
+    edit: editPostReducer
 })
 
 const store = configureStore({

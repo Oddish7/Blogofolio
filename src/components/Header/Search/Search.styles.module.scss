@@ -1,8 +1,17 @@
+@import '../../../utils/colors.module.scss';
+
 .search{
     height: 84px;
-    width: 84px;
-    background-color: #2231AA;
-    border-left: 1px solid #5360CD;
-    border-right: 1px solid #5360CD;
+    aspect-ratio: 1/1;
+    background-color: $main-color;
+    border: none;
+
+    border-left: 1px solid $main-hover-color;
+    border-right: 1px solid $main-hover-color;
+
     cursor: pointer;
+
+    &:hover{
+        background-color: $main-hover-color;
+    }
 }

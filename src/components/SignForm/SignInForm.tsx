@@ -1,12 +1,11 @@
 import { useRef, useEffect, useState, FormEvent } from 'react'
-import styles from './sign_form.module.scss'
 import { Input } from './Input/Input'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/store'
 import { useAuthState } from '../../store/auth/selector'
 import { setSignInEmailAction, setSignInPasswordAction, signInAction } from '../../store/auth/action'
-
+import styles from './SignForm.styles.module.scss'
 
 type Props = {
     disabled?: boolean
@@ -25,8 +24,6 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
     const inputRef = useRef<HTMLInputElement>(null)
     const navigate = useNavigate()
     const dispatch = useDispatch<AppDispatch>()
-    const [errors, setErrors] = useState('')
-
     const signInData = useAuthState()
 
     
@@ -37,14 +34,23 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
         }
     }, [signInData])
 
+    useEffect(() => {
+        if(signInData.isLoged){
+            dispatch(setSignInEmailAction(''))
+            dispatch(setSignInPasswordAction(''))
+            dispatch({
+                type: 'SET_CLIENT_ERRORS',
+                errors: {}
+            })
+        }
+    }, [signInData.isLoged])
+
     const signIn = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if((e.target as HTMLInputElement)?.type !== 'submit'){
             return
         }
         dispatch(signInAction(signInData.email!, signInData.password!))
-        dispatch(setSignInEmailAction(''))
-        dispatch(setSignInPasswordAction(''))
     } 
 
     return (

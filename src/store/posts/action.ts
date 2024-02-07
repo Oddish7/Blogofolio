@@ -16,12 +16,12 @@ export const setPageAction = (page: number = 1): PostAction => ({
 })
 
 
-export const LoadPostAsyncAction = (page: number = 1) : AppThunk => {     
+export const LoadPostAsyncAction = (page: number, pages?: string[]): AppThunk => {     
     const {limit} = getPageData(page!)
     const url = new URL('https://65670f6864fcff8d730fa806.mockapi.io/posts')
     const url2 = url
-    url2.searchParams.append('page', `${page}`);
-    url2.searchParams.append('limit', `${limit}`);
+    url2.searchParams.append('page', `${page}`)
+    url2.searchParams.append('limit', `${limit}`)
     return (dispatch) => {
         fetch(url2)
             .then(res => res.json())

@@ -2,10 +2,11 @@ import { isEmailValid } from "../../utils/inputValidation"
 import { AppThunk } from "../store"
 import { AuthAction } from "./types"
 
-export const loginAction = (userName: string): AuthAction => ({
+export const loginAction = (userName: string, email: string): AuthAction => ({
     type: 'LOGIN',
     userName: userName.toUpperCase(),
-    initials: userName[0].toUpperCase()
+    initials: userName[0].toUpperCase(),
+    email: email
 })
 
 export const logoutAction = (): AuthAction => ({
@@ -43,15 +44,15 @@ export const setAuthAlert = (value: boolean): AuthAction => {
 
 export const signInAction = (email: string, password: string): AppThunk => {  
     return async (dispatch, getState) => {
-
-        if((!getState().auth.email || !isEmailValid(getState().auth.email!)) || (!getState().auth.password || getState().auth.password?.length! < 8)){
+        const data = getState().auth
+        if((!data.email || !isEmailValid(data.email!)) || (!data.password || data.password?.length! < 8)){
             dispatch({
                 type: 'AUTH_FAILED',
                 errors: {
-                    email:  !getState().auth.email ? 'This field is required' : !isEmailValid(getState().auth.email!) ? 
+                    email:  !data.email ? 'This field is required' : !isEmailValid(data.email!) ? 
                             'Enter a valid email address' : 
                             undefined,
-                    password: !getState().auth.password ? 'This field is required' : getState().auth.password?.length! < 8 ? 
+                    password: !data.password ? 'This field is required' : data.password?.length! < 8 ? 
                             'Enter a valid password. Your password must contain at least 8 characters.' 
                             : undefined
                 }
@@ -153,7 +154,7 @@ export const getAuthorized = (): AppThunk => {
             })
             .then(([data, status]) => {
                 if(status.startsWith('2')){
-                    dispatch(loginAction(data.username))
+                    dispatch(loginAction(data.username, data.email))
                 }
             })
     }

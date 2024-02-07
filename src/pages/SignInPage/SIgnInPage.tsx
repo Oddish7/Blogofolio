@@ -1,6 +1,6 @@
-import { BackToHome } from '../../components/BackToHome/BackToHome'
+import { BackToHome } from '../../components/Buttons/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { SignInForm } from '../../components/SignForm/SignInForm'
 import { Alert } from '../../components/Alert/Alert'
 import { useAuthState } from '../../store/auth/selector'
@@ -8,17 +8,28 @@ import { setAuthAlert } from '../../store/auth/action'
 import { useDispatch } from 'react-redux'
 import styles from '../SignInPage.styles.module.scss'
 
-type InputType = {
-    title: string
-    text: string
-    type: string
-}
-
 export const SignInPage = () => {
     useEffect(() => window.scrollTo(0, 0))
     const dispatch = useDispatch()
     const closePage = () => dispatch(setAuthAlert(false))
+    const [hide, setHide] = useState<boolean>(false)
     const signInData = useAuthState()
+
+    useEffect(() => {}, [])
+
+    useEffect(() => {
+        if(signInData.showAuthError){
+            setTimeout(() => {
+                dispatch(setAuthAlert(false))
+            }, 4000)
+            setTimeout(() => {
+                setHide(true)
+            }, 3500)
+        }
+        else{
+            setHide(false)
+        }
+    }, [signInData.showAuthError])
 
     return (
         <div className={styles.wrapper}>
@@ -35,7 +46,7 @@ export const SignInPage = () => {
                 />
                 {
                     signInData.showAuthError ? (
-                        <Alert closeAlert={closePage} errorText={JSON.stringify(signInData.errors).slice(11, -2)}/>
+                        <Alert isHide={hide} closeAlert={closePage} errorText={JSON.stringify(signInData.errors).slice(11, -2)}/>
                     ) : (
                         null
                     )

@@ -41,6 +41,14 @@
             fill: white;
         }
     }
+
+    &:disabled{
+        cursor: not-allowed;
+
+        & path{
+            fill: $dark-gray;
+        }
+    }
 }
 
 .shadow_button{

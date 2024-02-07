@@ -34,10 +34,10 @@ export const SmallPost = (props: Props) => {
                 </div>
                 <div className={styles.mark_buttons}>
                     <BookMarkButton postId={post.id.toString()}/>
-                    <MoreButton postId={post.id.toString()}/>
+                    <MoreButton postId={post.id.toString()} title={post.title} description={post.description}/>
                     {
                         more! ?
-                        <MoreInnerButtons typeOfPost='more_small_post'/> :
+                        <MoreInnerButtons postId={post.id.toString()} typeOfPost='more_small_post'/> :
                         null
                     }
                 </div>

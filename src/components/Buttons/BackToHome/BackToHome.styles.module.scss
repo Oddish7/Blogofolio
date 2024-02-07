@@ -1,6 +1,13 @@
+@import '../../../utils/colors.module.scss';
+
 .back_to_home{
-    font-weight: 400;
+    font-family: Inter;
     font-size: 16px;
-    color: rgba(49, 48, 55, 1);
+    font-weight: 400;
+    color: $dark-mode-color;
     text-decoration: none;
+}
+
+:global(.dark) .back_to_home{
+    color: rgb(255, 255, 255)
 }

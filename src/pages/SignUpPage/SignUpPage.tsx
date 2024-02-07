@@ -1,8 +1,8 @@
-import styles from '../sign_in_page.module.scss'
-import { BackToHome } from '../../components/BackToHome/BackToHome'
+import { BackToHome } from '../../components/Buttons/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
 import { useEffect } from 'react'
 import { SignUpForm } from '../../components/SignForm/SignUpForm'
+import styles from '../SignInPage.styles.module.scss'
 
 type InputType = {
     title: string

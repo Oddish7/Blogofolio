@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState, FormEvent } from 'react'
-import styles from './sign_form.module.scss'
 import { Input } from './Input/Input'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSignUpState } from '../../store/signUp/selector'
 import { setEmailAction, setUsernameAction, setPasswordAction, sendSignUpAsyncAction, setCheckPasswordAction } from '../../store/signUp/action'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/store'
+import styles from './SignForm.styles.module.scss'
 
 
 type Props = {

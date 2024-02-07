@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BackToHome } from '../../components/BackToHome/BackToHome'
+import { BackToHome } from '../../components/Buttons/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
 import { SignForm } from '../../components/SignForm/SignForm'
 import styles from '../SignInPage.styles.module.scss'

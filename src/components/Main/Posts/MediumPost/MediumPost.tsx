@@ -32,12 +32,12 @@ export const MediumPost = (props: Props) => {
                 </div>
                 <div>
                     <BookMarkButton postId={post.id.toString()}/>
-                    <MoreButton postId={post.id.toString()}/>
+                    <MoreButton postId={post.id.toString()} title={post.title} description={post.description}/>
                 </div>
             </div>
             {
                 more! ?
-                <MoreInnerButtons typeOfPost='more_middle_post'/> : null
+                <MoreInnerButtons postId={post.id.toString()} typeOfPost='more_middle_post'/> : null
             }
         </div>
     )

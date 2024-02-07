@@ -38,10 +38,10 @@ export const BigPost = ({post, openImage}: Props) => {
                 </div>
                 <div className={`${styles.like_dis} ${styles.dop_buttons}`}>
                     <BookMarkButton postId={post.id.toString()} />
-                    <MoreButton postId={post.id.toString()} />
+                    <MoreButton postId={post.id.toString()} title={post.title} description={post.description} />
                     {
                         more! ?
-                        <MoreInnerButtons typeOfPost='more_big_post'/> : null
+                        <MoreInnerButtons postId={post.id.toString()} typeOfPost='more_big_post'/> : null
                     }
                 </div>
             </>

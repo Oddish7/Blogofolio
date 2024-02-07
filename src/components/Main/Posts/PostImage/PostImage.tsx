@@ -1,33 +1,16 @@
-import {useEffect, useState} from 'react'
 import { PrevAndNextButtons } from '../../../Buttons/PrevAndNextButtons/PrevAndNextButtons'
+import { Posts } from '../../Tabs/TabContent/TabContent'
 import styles from './PostImage.styles.module.scss'
-
-type Posts = {
-    title: string
-    description: string
-    image: string
-    date: Date
-    id: number
-}
 
 type Props = {
     closeImage: () => void
     idOfPost: number
     dataLength: number
+
+    dataPosts: Posts[]
 }
 
-export const PostImage = ({closeImage, idOfPost, dataLength}: Props) => {
-
-    const [data, setData] = useState<Posts>()
-
-    useEffect(() => {
-        fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts/${idOfPost}`)
-            .then(res => res.json())
-            .then(res => setData(res))
-    }, [idOfPost])
-    if (!data) {
-        return null
-    }
+export const PostImage = ({closeImage, idOfPost, dataLength, dataPosts }: Props) => {
     return (
         <div className={styles.post_image_wrapper}>
             <div className={styles.post_image_block}>
@@ -38,9 +21,9 @@ export const PostImage = ({closeImage, idOfPost, dataLength}: Props) => {
                 </button>
                 <div className={styles.post_image_inner_content}>
                     <div className={styles.post_image_inner_content_image}>
-                        <img src={data.image} alt={`post ${idOfPost} image`} />
+                        <img src={dataPosts[idOfPost]!.image} alt={`post ${idOfPost}`} />
                     </div>
-                    <PrevAndNextButtons dataLength={dataLength}/>
+                    <PrevAndNextButtons dataLength={dataPosts.length}/>
                 </div>
             </div>
         </div>

@@ -1,15 +1,13 @@
 import { useEffect} from "react"
-import { PostImage } from "../../Posts/PostImage/PostImage"
 import { useSelector, useDispatch } from "react-redux"
 import { CloseImageAction } from "../../../../store/postImage/action"
-import { postImage } from "../../../../store/postImage/selector"
 import { selectPosts } from "../../../../store/posts/selector"
 import { LoadPostAsyncAction } from "../../../../store/posts/action"
 import { AppDispatch } from "../../../../store/store"
 import { AllPosts } from "../../Posts/AllPosts/AllPosts"
 import { FavoritePosts } from "../../Posts/FavoritePosts/FavoritePosts"
+import { PopularPosts } from "../../Posts/PopularPosts/PopularPosts"
 import styles from "./TabsContent.styles.module.scss"
-
 
 export type Posts = {
     id: number
@@ -28,13 +26,13 @@ type Props = {
 export const TabContent = (props: Props) => {
     const {data_type} = props
     const {amountPosts, page} = useSelector(selectPosts)
-    const {isOpened, idOfPost} = useSelector(postImage)   
+    // const {isOpened, idOfPost} = useSelector(postImage)   
     const dispatch = useDispatch<AppDispatch>()
 
     const closeImagePost = () => dispatch(CloseImageAction())
 
     useEffect(() => {
-        dispatch(LoadPostAsyncAction())
+        dispatch(LoadPostAsyncAction(page!))
 
     }, [dispatch])
 
@@ -52,20 +50,18 @@ export const TabContent = (props: Props) => {
                     data_type === 1 ? (
                         <FavoritePosts/>
                     ) : (
-                        <div>
-                            {/* ПОПУЛЯРНЫЕ ПОСТЫ */}
-                        </div>
+                        <PopularPosts/>
                     )
                 )
             }
             </div>
-            {
+            {/* {
                 isOpened ? (
                     <PostImage dataLength={amountPosts.length} idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
                 ) : (
                     null
                 )
-            }
+            } */}
         </>
     )
 }
